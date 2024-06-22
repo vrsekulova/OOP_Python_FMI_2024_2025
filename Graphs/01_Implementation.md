@@ -98,3 +98,54 @@ class Graph:
             
             print("")
 ```
+
+## 2. Матрица на съседство
+### Код с подробни коментари
+```py
+import numpy as np
+
+class Graph:
+    
+    # създаване на матрица от нули с размерност size x size
+    def __init__(self, size):
+        self.adjMatrix = np.zeros((size, size), "int")
+
+    # създаване на ребро между два възела - чрез добавяне на 1 (ако графът е претеглен - добавяне на теглото)
+    def add_edge(self, vertex1, vertex2):
+        self.adjMatrix[vertex1][vertex2] += 1
+        self.adjMatrix[vertex2][vertex1] += 1
+```
+### Примерен тест:
+```py
+graph = Graph(5)
+
+graph.add_edge(0, 1)
+graph.add_edge(0, 2)
+graph.add_edge(0, 3)
+graph.add_edge(1, 2)
+graph.add_edge(2, 3)
+graph.add_edge(2, 4)
+
+print(graph.adjMatrix)
+```
+### Резултат:
+```
+[[0 1 1 1 0]
+ [1 0 1 0 0]
+ [1 1 0 1 1]
+ [1 0 1 0 0]
+ [0 0 1 0 0]]
+```
+
+### Код в чист вид:
+```pycon
+import numpy as np
+
+class Graph:
+    def __init__(self, size):
+        self.adjMatrix = np.zeros((size, size), "int")
+
+    def add_edge(self, vertex1, vertex2):
+        self.adjMatrix[vertex1][vertex2] += 1
+        self.adjMatrix[vertex2][vertex1] += 1
+```

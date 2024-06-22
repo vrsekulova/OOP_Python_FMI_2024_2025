@@ -100,6 +100,10 @@ class Graph:
 ```
 
 ## 2. Матрица на съседство
+* 1 - има ребро между два възела
+* 0 - няма връзка между два възела
+
+![img_1.png](01_resources/img_1.png)
 ### Код с подробни коментари
 ```py
 import numpy as np
@@ -116,6 +120,7 @@ class Graph:
         self.adjMatrix[vertex2][vertex1] += 1
 ```
 ### Примерен тест:
+![img.png](01_resources/img.png)
 ```py
 graph = Graph(5)
 
@@ -148,4 +153,66 @@ class Graph:
     def add_edge(self, vertex1, vertex2):
         self.adjMatrix[vertex1][vertex2] += 1
         self.adjMatrix[vertex2][vertex1] += 1
+```
+## 3. Матрица на инцидентност
+![img_3.png](01_resources/img_3.png)
+* 1 - ребро излиза от възел
+* -1 - ребро влиза във възел
+* 0 - няма връзка между ребро и възел
+* редовете в таблицата представляват възлите, а колоните - ребрата
+
+### Код с подробни коментари
+```pycon
+import numpy as np
+
+class Graph:
+    # създаване на матрица с размери nodes x edges
+    def __init__(self, nodes, edges):
+        self.matrix_of_incidence = np.zeros((nodes, edges), "int")
+    
+    # при подаден списък с двойки свързани помежду си възли
+    # добавяме или изваждаме 1 към матрицата, 
+    # базирайки се на горепосоченото правило
+    def add_edges(self, edges: list):
+        for i in range(len(edges)):
+            self.matrix_of_incidence[edges[i][0]][i] += 1
+            self.matrix_of_incidence[edges[i][1]][i] -= 1
+```
+### Примерен тест:
+![img_4.png](01_resources/img_4.png)
+> _**Забележка:**_ Върху изображението не са посочени номерата на ребрата. Те са следните: 
+<br> ребро 0: 0 --> 1
+<br> ребро 1: 1 --> 4
+<br>ребро 2: 3 --> 4
+<br>ребро 3: 3 --> 1
+<br>ребро 4: 2 --> 0
+
+
+```pycon
+graph = Graph(5,5)
+edges = [(0,1), (1,4), (3,4),(3,1), (2,0)]
+graph.add_edges(edges)
+print(graph.matrix_of_incidence)
+```
+### Резултат:
+```
+[[ 1  0  0  0 -1]
+ [-1  1  0 -1  0]
+ [ 0  0  0  0  1]
+ [ 0  0  1  1  0]
+ [ 0 -1 -1  0  0]]
+```
+
+### Код в чист вид
+```pycon
+import numpy as np
+
+class Graph:
+    def __init__(self, nodes, edges):
+        self.matrix_of_incidence = np.zeros((nodes, edges), "int")
+
+    def add_edges(self, edges: list):
+        for i in range(len(edges)):
+            self.matrix_of_incidence[edges[i][0]][i] += 1
+            self.matrix_of_incidence[edges[i][1]][i] -= 1
 ```

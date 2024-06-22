@@ -143,7 +143,7 @@ print(graph.adjMatrix)
 ```
 
 ### Код в чист вид:
-```pycon
+```py
 import numpy as np
 
 class Graph:
@@ -162,7 +162,7 @@ class Graph:
 * редовете в таблицата представляват възлите, а колоните - ребрата
 
 ### Код с подробни коментари
-```pycon
+```py
 import numpy as np
 
 class Graph:
@@ -188,7 +188,7 @@ class Graph:
 <br>ребро 4: 2 --> 0
 
 
-```pycon
+```py
 graph = Graph(5,5)
 edges = [(0,1), (1,4), (3,4),(3,1), (2,0)]
 graph.add_edges(edges)
@@ -204,7 +204,7 @@ print(graph.matrix_of_incidence)
 ```
 
 ### Код в чист вид
-```pycon
+```py
 import numpy as np
 
 class Graph:

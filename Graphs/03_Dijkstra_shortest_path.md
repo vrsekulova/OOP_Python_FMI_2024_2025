@@ -7,7 +7,7 @@ import heapq
 
 def dijkstra(graph, start, target):
     pq = [(0, start)]
-    shortest_paths = {start: (None, 0)} # {възел1: (възел2, разстояние между възел1 и start)}
+    shortest_paths = {start: (None, 0)} # {възел1: (възел2 - съсед на възел1, разстояние между възел1 и start)}
     while pq:
         # heapq.heappop(pq) --> присвоява стойността, 
         # която има най-кратко разстояние, 

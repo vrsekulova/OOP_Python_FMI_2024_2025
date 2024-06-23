@@ -69,3 +69,10 @@ for i in range(len(self.adjMatrix[vertex])):
     if self.adjMatrix[vertex][i] == -1:
         list_neighbors.append(i)
 ```
+### в) Свързан списък
+```py
+temp = self.graph[vertex]
+while temp:
+    list_neighbors.append(temp.vertex)
+    temp = temp.next
+```

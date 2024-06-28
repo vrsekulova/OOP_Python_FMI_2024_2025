@@ -1,4 +1,5 @@
 # Стек
+![img_1.png](images/img_1.png)
 * линейна структура от данни
 * **_LIFO_** (Last In First Out)
 * реализация в Python - чрез списък, чрез deque
@@ -29,7 +30,7 @@ class Stack:
 
 ## 2. Реализация чрез deque
 * deque = double queue (лесен достъп на първи и последен елемент с по-малка сложност спрямо списъка)
-
+![img.png](images/img.png)
 ```py
 from collections import deque
 
